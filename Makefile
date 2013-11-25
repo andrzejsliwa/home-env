@@ -22,6 +22,7 @@ all: \
 	ack \
 	neobundle \
 	vim \
+	oh_my_zsh \
 	zsh
 
 # oh my zsh
