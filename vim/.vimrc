@@ -108,6 +108,7 @@ endif
         au FileType erlang  setlocal shiftwidth=4 tabstop=4
         au FileType make    setlocal noexpandtab shiftwidth=4 tabstop=4
         au FileType snippet setlocal expandtab shiftwidth=4 tabstop=4
+        au BufNewFile,BufRead Makefile set filetype=make
         au BufNewFile,BufRead *.app.src set filetype=erlang
         au BufNewFile,BufRead *.config  set filetype=erlang
         au BufNewFile,BufRead .vimrc set filetype=vim
