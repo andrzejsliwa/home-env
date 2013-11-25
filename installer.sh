@@ -8,5 +8,5 @@ then
 else
     git clone https://github.com/andrzejsliwa/home-env.git ~/home-env
     cd $HOME/home-env
-    make
+    make stow all
 fi
