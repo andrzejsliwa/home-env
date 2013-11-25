@@ -1,0 +1,17 @@
+--ignore-case
+--ignore-dir=log
+--ignore-dir=logs
+--ignore-dir=docs
+--ignore-dir=ebin
+--ignore-dir=deps
+--ignore-dir=tmp
+--ignore-dir=vendor
+--ignore-dir=public
+--ignore-dir=rel
+--ignore-dir=.eunit
+--ignore-dir=ct_run*
+--type-set=DUMP=.dump
+--noDUMP
+--with-filename
+--type-set=LOGS=.log
+--noLOGS
