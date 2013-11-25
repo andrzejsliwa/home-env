@@ -3,10 +3,12 @@
     email    = andrzej.sliwa@i-tool.eu
 [github]
     user     = andrzejsliwa
+[push]
+    default  = current
 [color]
     branch       = true
     diff         = true
-    interactive  = true 
+    interactive  = true
     status       = true
     ui           = true
 [help]
