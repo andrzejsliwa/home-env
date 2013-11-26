@@ -29,6 +29,62 @@ endif
 call neobundle#rc($BUNDLES)
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'andrzejsliwa/vim-hemisu'
+NeoBundle 'Shougo/vimproc', { 'build': {
+        \   'windows': 'make -f make_mingw32.mak',
+        \   'cygwin': 'make -f make_cygwin.mak',
+        \   'mac': 'make -f make_mac.mak',
+        \   'unix': 'make -f make_unix.mak',
+        \  } }
+
+    " UNITE !!!
+    NeoBundle 'Shougo/unite.vim', { 'depends':
+        \ ['tsukkee/unite-tag','Shougo/unite-outline'] } " Unite {{{
+        call unite#filters#matcher_default#use(['matcher_fuzzy'])
+        call unite#filters#sorter_default#use(['sorter_rank'])
+        if executable ('ag')
+            let g:unite_source_grep_command = 'ag'
+            let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+            let g:unite_source_grep_recursive_opt = ''
+        elseif executable('ack')
+            let g:unite_source_grep_command='ack'
+            let g:unite_source_grep_default_opts='--no-heading --no-color -a'
+            let g:unite_source_grep_recursive_opt=''
+        endif
+        let g:unite_data_directory='~/.vim/.cache/unite'
+        let g:unite_source_file_rec_max_cache_files=5000
+        let g:unite_enable_start_insert = 1
+        let g:unite_prompt='» '
+        let g:unite_enable_ignore_case = 1
+        let g:unite_enable_smart_case = 1
+        nmap <space> [unite]
+        nnoremap [unite] <nop>
+        nnoremap <silent> [unite]<space> :<C-u>Unite -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr>
+        nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async<cr>
+        nnoremap <silent> [unite]l :<C-u>Unite -buffer-name=lines line<cr>
+        nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<cr>
+        nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=processes process<cr>
+        nnoremap <silent> [unite]n :<C-u>Unite file file/new<cr>
+        nnoremap <silent> [unite]/ :<C-u>Unite -buffer-name=search grep:.<cr>
+        nnoremap <silent> [unite]? :<C-u>execute 'Unite -buffer-name=search grep:.::' . expand("<cword>")<cr>
+    " }}} Unite
+    NeoBundle 'Shougo/unite-outline' " Unite outline {{{
+        nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline outline<cr>
+    " }}} Unite outline
+    NeoBundle 'Shougo/unite-help' " Unite help {{{
+        nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
+        nnoremap <silent> [unite]H :<C-u>UniteWithCursorWord -buffer-name=help help<CR>
+    " }}} Unite help
+    NeoBundle 'thinca/vim-unite-history' " Unite history {{{
+        let g:unite_source_history_yank_enable=1
+        nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yank history/yank<cr>
+    " }}}
+    NeoBundle 'Shougo/vimfiler' " {{{
+        let g:vimfiler_as_default_explorer = 1
+        let g:vimfiler_safe_mode_by_default = 0
+        let g:vimfiler_ignore_pattern = ''
+        nnoremap <silent> [unite]e :<C-u>VimFiler<cr>
+    " }}}
+
 NeoBundleCheck
 
 set background=dark
