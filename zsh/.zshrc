@@ -45,5 +45,31 @@ plugins=(git osx rake rebar rails3 capistrano)
 source $ZSH/oh-my-zsh.sh
 
 alias epull='for dir in ~/erlang/local-copy/*; do (cd "$dir" && echo "in $dir.." && git stash && git pull && rebar get-deps && rebar compile); done'
+alias e='open -a /Application/Emacs.app "$@"'
+alias ew='exec emacsclient -a "" "$@"'
+alias dns='ec /etc/hosts; dscacheutil -flushcache'
+alias fixp="rm /usr/local/var/postgres/postmaster.pid"
+
+function gcm {
+  message=""
+  for word in "$@"
+  do
+     message+="$word "
+  done
+  echo "git commit -u -m \"$message\""
+  git commit -u -m "$message"
+  git push
+}
+
+function gsb {
+  git log | grep '^Author' | sort | uniq -ci | sort -r
+}
+
+function gsu {
+  git remote add upstream git://github.com/$@.git
+}
+
+export EDITOR=ew
+
 # Customize to your needs...
 export PATH=/usr/local/bin:$PATH
