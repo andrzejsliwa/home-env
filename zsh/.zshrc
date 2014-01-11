@@ -56,6 +56,7 @@ function c {
   do
      message+="$word "
   done
+  message="${message%"${message##*[![:space:]]}"}"
   echo "git commit -u -m \"$message\""
   git commit -u -m "$message"
   git push
