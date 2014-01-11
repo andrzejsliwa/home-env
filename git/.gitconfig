@@ -1,39 +1,39 @@
 [user]
-    name     = Andrzej Śliwa
+    name     = Andrzej Sliwa
     email    = andrzej.sliwa@i-tool.eu
+
 [github]
-    user     = andrzejsliwa
+    user = andrzejsliwa
 [push]
-    default  = current
+    default = current
 [color]
-    branch       = true
-    diff         = true
-    interactive  = true
-    status       = true
-    ui           = true
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = 1
 [help]
     autocorrect  = true
 [credential]
     helper = osxkeychain
 [core]
-    editor       = vim
-    autocrlf     = input
+    autocrlf = input
     excludesfile = ~/.gitignore_global
 [alias]
-    st       = status -bs
-    br       = branch -avv
-    last     = diff --cached HEAD^
-    lg       = log --stat --abbrev-commit
-    lgg      = log --stat --abbrev-commit -p
-    ll       = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
-    df       = diff --color-words
-    dh       = diff --color-words HEAD
-    ds       = diff --stat -r
-    amend    = commit --amend
-    fix      = commit --amend --no-edit
-    ci       = commit
+    st = status -bs
+    br = branch -avv
+    last = diff --cached HEAD^
+    lg = log --stat --abbrev-commit
+    lgg = log --stat --abbrev-commit -p
+    ll = log --graph --all --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    df = diff --color-words
+    dh = diff --color-words HEAD
+    ds = diff --stat -r
+    amend = commit --amend
+    fix = commit --amend --no-edit
+    ci = commit
     unpushed = cherry -v
-    pu       = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
+    pu  = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
     upstream = !"git remote add upstream"
-    who      = shortlog -s --
-    ignore   = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore
+    who = shortlog -s --
+    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo $1 >>.gitignore

@@ -44,5 +44,6 @@ plugins=(git osx rake rebar rails3 capistrano)
 
 source $ZSH/oh-my-zsh.sh
 
+alias epull='for dir in ~/erlang/local-copy/*; do (cd "$dir" && echo "in $dir.." && git stash && git pull && rebar get-deps && rebar compile); done'
 # Customize to your needs...
-export PATH=$PATH:/Users/andrzejsliwa/.rvm/gems/ruby-2.0.0-p247@core/bin:/Users/andrzejsliwa/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/andrzejsliwa/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/andrzejsliwa/.rvm/bin:/Users/andrzejsliwa/sencha/Sencha/Cmd/4.0.0.203:/usr/local/heroku/bin:/Users/andrzejsliwa/.erlang-tools:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/andrzejsliwa/go/bin:/Users/andrzejsliwa/go-code/bin
+export PATH=/usr/local/bin:$PATH

@@ -20,8 +20,7 @@ GIT_VERBOSE        = $(GIT_VERBOSE_$(VERBOSE))
 all: \
 	git \
 	ack \
-	neobundle \
-	vim \
+	emacs \
 	oh_my_zsh \
 	zsh
 
@@ -33,13 +32,11 @@ zsh: $(DESTINATION)/.oh-my-zsh
 $(DESTINATION)/.oh-my-zsh:
 	$(STOW_VERBOSE) stow $(STOW_OPTIONS) zsh
 
-# vim
-neobundle: vim/.vim/bundle/neobundle.vim
-vim/.vim/bundle/neobundle.vim:
-	$(GIT_VERBOSE) git clone $(NEOBUNDLE_URL) vim/.vim/bundle/neobundle.vim
-vim: $(DESTINATION)/.vimrc
-$(DESTINATION)/.vimrc:
-	$(STOW_VERBOSE) stow $(STOW_OPTIONS) vim
+emacs: $(DESTINATION)/.emacs.d
+$(DESTINATION)/.emacs.d:
+	export PRELUDE_URL="https://github.com/andrzejsliwa/prelude.git" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+	git clone https://github.com/andrzejsliwa/wrangler.git $(DESTINATION)/.emacs.d/personal/vendor/wrangler 
+	cd $(DESTINATION)/.emacs.d/personal/vendor/wrangler && ./configure && make 
 
 # install stow for linux or mac
 stow:
