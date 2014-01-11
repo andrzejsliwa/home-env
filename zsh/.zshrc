@@ -45,12 +45,12 @@ plugins=(git osx rake rebar rails3 capistrano)
 source $ZSH/oh-my-zsh.sh
 
 alias epull='for dir in ~/erlang/local-copy/*; do (cd "$dir" && echo "in $dir.." && git stash && git pull && rebar get-deps && rebar compile); done'
-alias e='open -a /Application/Emacs.app "$@"'
+alias e='open -a /Applications/Emacs.app "$@"'
 alias ew='exec emacsclient -a "" "$@"'
 alias dns='ec /etc/hosts; dscacheutil -flushcache'
 alias fixp="rm /usr/local/var/postgres/postmaster.pid"
 
-function gcm {
+function c {
   message=""
   for word in "$@"
   do
