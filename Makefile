@@ -35,8 +35,9 @@ $(DESTINATION)/.oh-my-zsh:
 emacs: $(DESTINATION)/.emacs.d
 $(DESTINATION)/.emacs.d:
 	export PRELUDE_URL="https://github.com/andrzejsliwa/prelude.git" && curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
-	git clone https://github.com/andrzejsliwa/wrangler.git $(DESTINATION)/.emacs.d/personal/vendor/wrangler 
-	cd $(DESTINATION)/.emacs.d/personal/vendor/wrangler && ./configure && make 
+	git clone https://github.com/andrzejsliwa/wrangler.git $(DESTINATION)/.emacs.d/personal/vendor/wrangler
+	cd $(DESTINATION)/.emacs.d/personal/vendor/wrangler && ./configure && make
+	cd $(DESTINATION)/.emacs.d && ./einstall
 
 # install stow for linux or mac
 stow:
